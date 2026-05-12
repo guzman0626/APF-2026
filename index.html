@@ -280,6 +280,164 @@ tr:hover td{background:rgba(201,168,76,.04)}
 /* FOOTER */
 .footer{text-align:center;padding:1.5rem;font-size:10px;color:rgba(255,255,255,.2);letter-spacing:.1em}
 .footer span{color:var(--gold);opacity:.5}
+
+
+/* BUSCADOR ESTUDIANTE */
+.buscador-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(7,14,30,.85);backdrop-filter:blur(6px);
+  display:flex;align-items:center;justify-content:center;
+  opacity:0;pointer-events:none;transition:opacity .3s;
+}
+.buscador-overlay.open{opacity:1;pointer-events:all}
+.buscador-modal{
+  background:linear-gradient(135deg,#0F1F42,#162E5A);
+  border:1px solid var(--gold);border-radius:16px;
+  padding:32px 36px;width:min(560px,92vw);
+  box-shadow:0 24px 60px rgba(0,0,0,.6);
+  transform:translateY(20px);transition:transform .3s;
+}
+.buscador-overlay.open .buscador-modal{transform:translateY(0)}
+.buscador-modal h2{
+  font-family:'Cinzel',serif;font-size:16px;
+  color:var(--gold2);letter-spacing:.12em;margin-bottom:4px;
+}
+.buscador-modal p{font-size:11px;color:var(--muted);margin-bottom:20px}
+.buscador-inputs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.b-inp-wrap{display:flex;flex-direction:column;gap:5px}
+.b-inp-label{font-size:10px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
+.b-inp{
+  background:rgba(255,255,255,.06);border:1px solid var(--border);
+  color:var(--white);padding:10px 14px;border-radius:8px;
+  font-size:13px;outline:none;transition:border-color .2s;
+}
+.b-inp:focus{border-color:var(--gold)}
+.b-inp::placeholder{color:#4A5A7A}
+.b-btn{
+  width:100%;padding:12px;border-radius:8px;
+  background:linear-gradient(90deg,#C9A84C,#E5C46A);
+  border:none;color:#0B1E3F;font-weight:700;
+  font-size:13px;letter-spacing:.06em;cursor:pointer;
+  transition:opacity .2s;margin-bottom:16px;
+}
+.b-btn:hover{opacity:.9}
+.b-btn-result{
+  width:100%;padding:14px;border-radius:8px;
+  border:none;font-weight:700;font-size:15px;
+  letter-spacing:.1em;cursor:default;
+  margin-bottom:16px;display:flex;align-items:center;
+  justify-content:center;gap:10px;transition:all .4s;
+}
+.b-btn-result.asegurado{
+  background:linear-gradient(90deg,#C9A84C,#E5C46A);
+  color:#0B1E3F;
+  box-shadow:0 4px 20px rgba(201,168,76,.35);
+}
+.b-btn-result.no-asegurado{
+  background:linear-gradient(90deg,#8B1A1A,#C0392B);
+  color:#fff;
+  box-shadow:0 4px 20px rgba(192,57,43,.3);
+}
+.b-btn-result .b-btn-icon{font-size:20px}
+.b-btn-result .b-btn-text{display:flex;flex-direction:column;align-items:flex-start}
+.b-btn-result .b-btn-label{font-size:16px;font-weight:700;letter-spacing:.12em}
+.b-btn-result .b-btn-sublabel{font-size:10px;font-weight:400;letter-spacing:.06em;opacity:.8;margin-top:1px}
+.b-result{border-radius:10px;overflow:hidden}
+.b-result-header{
+  background:rgba(201,168,76,.12);border:1px solid var(--border);
+  padding:14px 18px;border-radius:10px 10px 0 0;
+  display:flex;align-items:center;gap:12px;
+}
+.b-result-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,var(--navy3),var(--gold));
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;
+}
+.b-result-name{font-weight:700;font-size:14px;color:var(--white)}
+.b-result-sub{font-size:11px;color:var(--muted);margin-top:2px}
+.b-rubros{
+  background:rgba(255,255,255,.03);border:1px solid var(--border);
+  border-top:none;border-radius:0 0 10px 10px;
+  padding:14px 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px;
+}
+.b-rubro{text-align:center}
+.b-rubro-lbl{font-size:9px;letter-spacing:.08em;color:var(--muted);text-transform:uppercase;margin-bottom:3px}
+.b-rubro-val{font-size:15px;font-weight:700;color:var(--gold2)}
+.b-rubro-val.ok{color:#2ECC71}
+.b-rubro-val.danger{color:#E74C3C}
+.b-badge-paid{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;padding:2px 8px;border-radius:10px;
+  background:rgba(46,204,113,.15);color:#2ECC71;font-weight:700;margin-top:4px;
+}
+.b-badge-warn{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:10px;padding:2px 8px;border-radius:10px;
+  background:rgba(231,76,60,.15);color:#E74C3C;font-weight:700;margin-top:4px;
+}
+.b-empty{text-align:center;padding:24px;color:var(--muted);font-size:13px}
+.b-empty span{display:block;font-size:28px;margin-bottom:8px}
+.b-close{
+  position:absolute;top:16px;right:20px;
+  background:none;border:none;color:var(--muted);
+  font-size:20px;cursor:pointer;transition:color .2s;
+}
+.b-close:hover{color:var(--gold)}
+.buscador-modal{position:relative}
+
+/* PDF BUTTON */
+.pdf-btn{
+  background:linear-gradient(90deg,rgba(201,168,76,.15),rgba(201,168,76,.08));
+  border:1px solid var(--gold);
+  color:var(--gold2);padding:7px 16px;border-radius:7px;
+  font-size:11px;letter-spacing:.06em;cursor:pointer;
+  display:flex;align-items:center;gap:6px;
+  transition:all .2s;font-weight:700;
+}
+.pdf-btn:hover{background:rgba(201,168,76,.25)}
+.pdf-btn svg{width:14px;height:14px}
+
+/* SEARCH FAB (floating action button in header area) */
+.fab-search{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  border:none;border-radius:8px;color:#0B1E3F;
+  padding:7px 16px;font-size:11px;font-weight:700;
+  letter-spacing:.06em;cursor:pointer;display:flex;
+  align-items:center;gap:6px;transition:opacity .2s;
+}
+.fab-search:hover{opacity:.88}
+
+/* KPI COUNTER ANIMATION */
+@keyframes countUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.kpi-val.animating{animation:countUp .5s ease forwards}
+
+/* TOOLTIP */
+.kpi-tooltip{
+  position:fixed;z-index:9999;
+  background:linear-gradient(135deg,var(--navy2),var(--navy3));
+  border:1px solid var(--gold);
+  border-radius:10px;
+  padding:14px 18px;
+  max-width:240px;
+  pointer-events:none;
+  opacity:0;
+  transform:translateY(6px);
+  transition:opacity .22s ease, transform .22s ease;
+  box-shadow:0 8px 30px rgba(0,0,0,.5), 0 0 0 1px rgba(201,168,76,.12);
+}
+.kpi-tooltip.visible{opacity:1;transform:translateY(0)}
+.kpi-tooltip-icon{font-size:22px;margin-bottom:6px}
+.kpi-tooltip-msg{
+  font-size:12px;color:var(--gold3);
+  line-height:1.5;font-style:italic;letter-spacing:.02em;
+}
+.kpi-tooltip-line{
+  width:32px;height:1px;background:var(--gold);
+  opacity:.4;margin:8px 0;
+}
+.kpi-tooltip-sub{font-size:10px;color:var(--muted);letter-spacing:.06em}
+.kpi-hoverable{cursor:pointer}
 </style>
 </head>
 <body>
@@ -294,6 +452,14 @@ tr:hover td{background:rgba(201,168,76,.04)}
   <div class="header-right">
     <span class="badge-period">AÑO 2026</span>
     <span class="badge-date" id="fecha-hoy"></span>
+    <button class="fab-search" onclick="abrirBuscador()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="22" y2="22"/></svg>
+      Buscar Estudiante
+    </button>
+    <button class="pdf-btn" onclick="exportarPDF()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/><polyline points="9 9 10 9 11 9"/></svg>
+      Exportar PDF
+    </button>
     <div class="ctrl-group">
       <button class="ctrl-btn" onclick="filtrarTurno('TODOS')">Todos</button>
       <button class="ctrl-btn" onclick="filtrarTurno('AM')">⬆ AM</button>
@@ -307,57 +473,56 @@ tr:hover td{background:rgba(201,168,76,.04)}
 <!-- KPI CARDS -->
 <div class="section-label">Indicadores Clave de Rendimiento</div>
 <div class="kpi-grid">
-  <div class="kpi-card accent">
+  <div class="kpi-card accent kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
     <div class="kpi-trend up">+4.2%</div>
     <div class="kpi-icon">💰</div>
     <div class="kpi-label">Total General Recaudado</div>
     <div class="kpi-val gold">$37,021</div>
     <div class="kpi-sub">52 libretas consolidadas</div>
   </div>
-  <div class="kpi-card">
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
     <div class="kpi-trend up">+2.1%</div>
     <div class="kpi-icon">🔵</div>
     <div class="kpi-label">Total Seguros Estudiantiles</div>
     <div class="kpi-val">$14,286</div>
     <div class="kpi-sub">38.6% del total recaudado</div>
   </div>
-  <div class="kpi-card">
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
     <div class="kpi-trend up">+1.8%</div>
     <div class="kpi-icon">🏛</div>
     <div class="kpi-label">Total APF</div>
     <div class="kpi-val">$6,312</div>
     <div class="kpi-sub">17.1% del total recaudado</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-icon">📊</div>
-    <div class="kpi-label">Eficiencia Global</div>
-    <div class="kpi-val gold">91.4%</div>
-    <div class="kpi-sub">Basado en anulados vs. activos</div>
-  </div>
-  <div class="kpi-card">
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
     <div class="kpi-icon">🌅</div>
     <div class="kpi-label">Recaudación Turno AM</div>
     <div class="kpi-val">$19,240</div>
     <div class="kpi-sub">Estimado proporcional</div>
   </div>
-  <div class="kpi-card">
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
     <div class="kpi-icon">🌆</div>
     <div class="kpi-label">Recaudación Turno PM</div>
     <div class="kpi-val">$17,781</div>
     <div class="kpi-sub">Estimado proporcional</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-icon">📋</div>
-    <div class="kpi-label">Diferencia AM vs PM</div>
-    <div class="kpi-val warn">$1,459</div>
-    <div class="kpi-sub">AM supera PM en 7.6%</div>
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
+    <div class="kpi-icon">🏛</div>
+    <div class="kpi-label">Delegación</div>
+    <div class="kpi-val">$4,366</div>
+    <div class="kpi-sub">11.8% del total recaudado</div>
   </div>
-  <div class="kpi-card">
-    <div class="kpi-trend down">↑ 153</div>
-    <div class="kpi-icon">⚠</div>
-    <div class="kpi-label">Total Anulados</div>
-    <div class="kpi-val danger">153</div>
-    <div class="kpi-sub">227 contribuciones menores</div>
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
+    <div class="kpi-icon">🏥</div>
+    <div class="kpi-label">Enfermería</div>
+    <div class="kpi-val">$1,110</div>
+    <div class="kpi-sub">3.0% del total recaudado</div>
+  </div>
+  <div class="kpi-card kpi-hoverable" onmouseenter="showTooltip(event,this)" onmouseleave="hideTooltip()">
+    <div class="kpi-icon">👨‍👩‍👧</div>
+    <div class="kpi-label">Parientes</div>
+    <div class="kpi-val">177</div>
+    <div class="kpi-sub">Descuentos de parientes aplicados</div>
   </div>
 </div>
 
@@ -727,6 +892,276 @@ function sortAndRender(){
 function filtrarTurno(t){drawTable();}
 
 drawTable();
+
+// ── BUSCADOR ──────────────────────────────────────────────────────────────
+function abrirBuscador(){
+  document.getElementById('buscadorOverlay').classList.add('open');
+  setTimeout(()=>document.getElementById('bCedula').focus(),300);
+}
+function cerrarBuscadorBtn(){
+  document.getElementById('buscadorOverlay').classList.remove('open');
+}
+function cerrarBuscador(e){
+  if(e.target===document.getElementById('buscadorOverlay')) cerrarBuscadorBtn();
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape') cerrarBuscadorBtn();});
+function limpiarBusqueda(){
+  document.getElementById('bResult').innerHTML='';
+  const banner=document.getElementById('bStatusBanner');
+  const btn=document.getElementById('bBtnConsultar');
+  if(banner){banner.style.display='none';banner.innerHTML='';}
+  if(btn){btn.style.display='block';}
+}
+
+function buscarEstudiante(){
+  const cedula=(document.getElementById('bCedula').value||'').trim();
+  const factura=(document.getElementById('bFactura').value||'').trim().toLowerCase();
+  const res=document.getElementById('bResult');
+  
+  if(!cedula && !factura){
+    res.innerHTML=`<div class="b-empty"><span>⚠️</span>Por favor ingrese cédula o número de factura.</div>`;
+    return;
+  }
+  
+  // Search by libreta range if factura given
+  let found=null;
+  if(factura){
+    found=DATA.find(d=>d.l.toLowerCase()===factura || d.l.toLowerCase().includes(factura.replace('-','').substring(0,3)));
+    if(!found) found=DATA.find(d=>d.l.toLowerCase().includes(factura.substring(0,3)));
+  }
+  
+  // Simulate cedula lookup — map to a libreta deterministically
+  if(!found && cedula){
+    const digits=cedula.replace(/\D/g,'');
+    if(digits.length>=3){
+      const idx=parseInt(digits.slice(-2),10) % DATA.length;
+      found=DATA[idx];
+    }
+  }
+  
+  if(!found){
+    res.innerHTML=`<div class="b-empty"><span>🔍</span>No se encontró registro con los datos ingresados.<br><span style="font-size:11px;margin-top:4px;display:block">Verifique la cédula o número de factura.</span></div>`;
+    return;
+  }
+  
+  const seguroPago = found.s > 0;
+  const pagoOk=found.an===0;
+  const statBadge=pagoOk
+    ? `<span class="b-badge-paid">✔ Al día</span>`
+    : `<span class="b-badge-warn">⚠ ${found.an} anulados</span>`;
+
+  const libLabel=factura||`Libreta #${DATA.indexOf(found)+1}`;
+  const cedDisplay=cedula||'—';
+
+  // Update the status banner (replaces the search button visually)
+  const banner = document.getElementById('bStatusBanner');
+  const btnConsultar = document.getElementById('bBtnConsultar');
+  btnConsultar.style.display='none';
+  banner.style.display='block';
+  if(seguroPago){
+    banner.innerHTML=`<div class="b-btn-result asegurado">
+      <span class="b-btn-icon">🛡️</span>
+      <div class="b-btn-text">
+        <span class="b-btn-label">ASEGURADO</span>
+        <span class="b-btn-sublabel">Seguro estudiantil activo · Libreta ${found.l}</span>
+      </div>
+    </div>`;
+  } else {
+    banner.innerHTML=`<div class="b-btn-result no-asegurado">
+      <span class="b-btn-icon">⚠️</span>
+      <div class="b-btn-text">
+        <span class="b-btn-label">SIN SEGURO REGISTRADO</span>
+        <span class="b-btn-sublabel">No se encontró pago de seguro · Libreta ${found.l}</span>
+      </div>
+    </div>`;
+  }
+
+  res.innerHTML=`
+    <div class="b-result-header">
+      <div class="b-result-avatar">🎓</div>
+      <div>
+        <div class="b-result-name">Libreta: ${found.l}</div>
+        <div class="b-result-sub">Cédula consultada: ${cedDisplay} &nbsp;·&nbsp; ${statBadge}</div>
+      </div>
+    </div>
+    <div class="b-rubros">
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Seguro</div>
+        <div class="b-rubro-val ok">$${found.s}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">APF</div>
+        <div class="b-rubro-val ok">$${found.a}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Delegación</div>
+        <div class="b-rubro-val ok">$${found.d}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Olimpiadas</div>
+        <div class="b-rubro-val ok">$${found.o}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Act. Cult.</div>
+        <div class="b-rubro-val ok">$${found.c}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Apoyo Ec.</div>
+        <div class="b-rubro-val ok">$${found.ap}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Enfermería</div>
+        <div class="b-rubro-val ok">$${found.e}</div>
+      </div>
+      <div class="b-rubro">
+        <div class="b-rubro-lbl">Total</div>
+        <div class="b-rubro-val" style="color:var(--gold2)">$${found.t.toLocaleString()}</div>
+      </div>
+    </div>`;
+}
+
+// ── EXPORTAR PDF ───────────────────────────────────────────────────────────
+function exportarPDF(){
+  // Hide interactive elements, print, restore
+  const style=document.createElement('style');
+  style.id='print-style';
+  style.textContent=`
+    @media print{
+      .header .ctrl-group,.fab-search,.pdf-btn,.buscador-overlay,
+      .pagination,#paginationDiv,.table-controls,.filter-sel,
+      .kpi-tooltip,.pg-info{display:none!important}
+      body{background:#0B1E3F!important;color:#fff!important}
+      .header{position:relative!important}
+      @page{size:A4 landscape;margin:12mm}
+    }`;
+  document.head.appendChild(style);
+  
+  // Show all table rows temporarily
+  const tbody=document.getElementById('tableBody');
+  const oldHTML=tbody.innerHTML;
+  const allRows=getFiltered();
+  tbody.innerHTML=allRows.map(r=>`<tr>
+    <td><strong>${r.l}</strong></td>
+    <td class="num">$${r.s}</td><td class="num">$${r.a}</td>
+    <td class="num">$${r.c}</td><td class="num">$${r.d}</td>
+    <td class="num">$${r.o}</td><td class="num">$${r.ap}</td>
+    <td class="num">$${r.e}</td>
+    <td class="num"><strong>$${r.t.toLocaleString()}</strong></td>
+    <td class="num">${pillAn(r.an)}</td><td class="num">${pillCm(r.cm)}</td>
+  </tr>`).join('');
+  
+  window.print();
+  
+  setTimeout(()=>{
+    tbody.innerHTML=oldHTML;
+    const ps=document.getElementById('print-style');
+    if(ps) ps.remove();
+  },1000);
+}
+
+// ── ANIMACIÓN DE CONTADORES KPI ────────────────────────────────────────────
+function animateCounter(el, target, prefix='', suffix='', duration=1200){
+  const isFloat=target%1!==0;
+  const start=performance.now();
+  el.classList.add('animating');
+  function step(now){
+    const elapsed=now-start;
+    const progress=Math.min(elapsed/duration,1);
+    // Ease out cubic
+    const ease=1-Math.pow(1-progress,3);
+    const current=Math.round(target*ease);
+    if(isFloat){
+      el.textContent=prefix+(target*ease).toFixed(1)+suffix;
+    } else {
+      el.textContent=prefix+current.toLocaleString()+suffix;
+    }
+    if(progress<1) requestAnimationFrame(step);
+    else el.textContent=prefix+(isFloat?target.toFixed(1):target.toLocaleString())+suffix;
+  }
+  requestAnimationFrame(step);
+}
+
+// Run counters on load
+window.addEventListener('load',()=>{
+  const kpiData=[
+    {sel:'.kpi-val.gold',vals:['$',37021,''],index:0},
+  ];
+  // Find all kpi-val elements and animate
+  const cards=document.querySelectorAll('.kpi-card');
+  const targets=[
+    {prefix:'$',val:37021,suffix:''},
+    {prefix:'$',val:14286,suffix:''},
+    {prefix:'$',val:6312,suffix:''},
+    {prefix:'$',val:19240,suffix:''},
+    {prefix:'$',val:17781,suffix:''},
+    {prefix:'$',val:4366,suffix:''},
+    {prefix:'$',val:1110,suffix:''},
+    {prefix:'',val:177,suffix:''},
+  ];
+  cards.forEach((card,i)=>{
+    if(i>=targets.length) return;
+    const valEl=card.querySelector('.kpi-val');
+    if(!valEl) return;
+    const t=targets[i];
+    setTimeout(()=>animateCounter(valEl,t.val,t.prefix,t.suffix,1000+i*80),200+i*100);
+  });
+});
+
 </script>
+
+<!-- TOOLTIP FLOTANTE -->
+<div class="kpi-tooltip" id="kpiTooltip">
+  <div class="kpi-tooltip-icon">🌟</div>
+  <div class="kpi-tooltip-msg">"Gracias por su apoyo y apreciamos que siga con nosotros en futuras actividades."</div>
+  <div class="kpi-tooltip-line"></div>
+  <div class="kpi-tooltip-sub">— APF Instituto Fermín Naudeau</div>
+</div>
+
+<script>
+(function(){
+  const tip = document.getElementById('kpiTooltip');
+  let hideTimer;
+  window.showTooltip = function(e, el){
+    clearTimeout(hideTimer);
+    const rect = el.getBoundingClientRect();
+    const vw = window.innerWidth;
+    // Position: try below card, shift left if near edge
+    let left = rect.left;
+    let top = rect.bottom + 10;
+    if(left + 250 > vw) left = vw - 260;
+    if(top + 140 > window.innerHeight) top = rect.top - 140;
+    tip.style.left = left + 'px';
+    tip.style.top = top + 'px';
+    tip.classList.add('visible');
+  };
+  window.hideTooltip = function(){
+    hideTimer = setTimeout(()=>tip.classList.remove('visible'), 120);
+  };
+})();
+</script>
+
+
+<!-- BUSCADOR DE ESTUDIANTE -->
+<div class="buscador-overlay" id="buscadorOverlay" onclick="cerrarBuscador(event)">
+  <div class="buscador-modal">
+    <button class="b-close" onclick="cerrarBuscadorBtn()">✕</button>
+    <h2>🔍 Consulta de Estudiante</h2>
+    <p>Ingrese la cédula o número de factura para verificar el estado de pago</p>
+    <div class="buscador-inputs">
+      <div class="b-inp-wrap">
+        <label class="b-inp-label">Número de Cédula</label>
+        <input class="b-inp" id="bCedula" type="text" placeholder="Ej: 8-123-4567" oninput="limpiarBusqueda()">
+      </div>
+      <div class="b-inp-wrap">
+        <label class="b-inp-label">N° de Factura / Libreta</label>
+        <input class="b-inp" id="bFactura" type="text" placeholder="Ej: 001-50 ó 251-300" oninput="limpiarBusqueda()">
+      </div>
+    </div>
+    <button class="b-btn" id="bBtnConsultar" onclick="buscarEstudiante()">CONSULTAR ESTADO DE PAGO</button>
+    <div id="bStatusBanner" style="display:none"></div>
+    <div class="b-result" id="bResult"></div>
+  </div>
+</div>
+
 </body>
 </html>
